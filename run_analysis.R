@@ -54,17 +54,16 @@ colnames(dataMeanSd)[3:ncol(dataMeanSd)] <- featuresToExtract_names
 
 
 ## Creates a second, independent tidy data set with the average of
-##    each variable for each activity and each subject.
-## load packages
+## each variable for each activity and each subject.
+## load reshape2
 library(reshape2)
-library(plyr)
-
 melted <- melt(dataMeanSd, id.vars=c("Subject", "Activity"), 
                measure.vars = colnames(dataMeanSd)[3:ncol(dataMeanSd)])
-tidyData <- ddply(melted, .(Subject, Activity, variable), 
-                   summarize, average = mean(value))
+tidyData <- dcast( melted, formula = Subject+Activity ~ variable, 
+                   fun.aggregate = mean )
 
 ## Write table to disk
 write.table(tidyData, file = "tidyDataset.txt", row.names = FALSE)
 
-
+## The following code is for reading tidyDataset.txt into R (uncomment to run)
+## tidyData_check <- read.table("tidyDataset.txt", header=TRUE)

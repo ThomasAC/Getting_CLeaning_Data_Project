@@ -11,7 +11,8 @@ Repository for Coursera "Getting and Cleaning Data Course Project" from John Hop
 
 ## Dependancies
 
-Depend on reashape2 and plyr packages. Both packages need to be installed.
+Requires curl for downloading the data (ubuntu `sudo apt-get install curl`)
+Depend on reshape2. Install with `install.packages("reshape2")`
 
 ## Script
 
@@ -29,6 +30,7 @@ The script can be run using the following `source("run_analysis.R")`
  * Computes the average of each variable for each activity and each subject
  * Creates a second, independent tidy dataset (tidyDataset) with the average of each variable for each activity and each subject.
  * Writes this tidy dataset to disk (tidyDataset.txt)
+ * Provides the code for reading tidyDataset.txt into R for check.
 
 The code book for tidyDataset.txt is contained in the CodeBook.md file locatec in this repository.
 
